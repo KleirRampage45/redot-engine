@@ -3140,6 +3140,9 @@ Error Main::setup2(bool p_show_boot_logo) {
 		OS::get_singleton()->benchmark_begin_measure("Servers", "Input");
 
 		input = memnew(Input);
+#ifdef MODULE_MCP_ENABLED
+		if (!mcp_server_enabled)
+#endif
 		OS::get_singleton()->initialize_joypads();
 
 		OS::get_singleton()->benchmark_end_measure("Servers", "Input");
